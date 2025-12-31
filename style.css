@@ -115,6 +115,7 @@ body {
 /* Mobile tuning */
 @media (max-width: 600px) {
     .row {
+        margin-top: 20px;
         gap: 6px;
     }
 
@@ -194,11 +195,4 @@ body {
 @keyframes pulse {
     from { text-shadow: 0 0 10px #0ff; }
     to { text-shadow: 0 0 30px #0ff; }
-}
-
-/* Mobile Optimization */
-@media (max-width: 600px) {
-    #countdown-container {
-        padding: 30px 15px;
-    }
 }
