@@ -7,12 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="countdown-container">
-        <h2 id="timer">12:00:00</h2>
-        <div class="row"><p>Days</p><p>Hours</p><p>Mins</p><p>Secs</p></div>
-        <h1 id="countdown" class="greet"></h1>
+    <div class="box">
+        <div id="countdown-container">
+            <h2 id="timer">12:00:00</h2>
+            <div class="row"><p>Days</p><p>Hours</p><p>Mins</p><p>Secs</p></div>
+            <h1 id="countdown" class="greet"></h1>
+        </div>
     </div>
-    <div id="fireworks" class="hidden"></div>
+    <video id="fireworks" class="hidden" autoplay muted loop playsinline>
+        <source src="/images/fireworks.mp4" type="video/mp4">
+    </video>
     <script src="script.js"></script>
 </body>
 </html>
