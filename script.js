@@ -7,6 +7,7 @@ const box = document.querySelector('.box');
 const targetDate = new Date('December 31, 2025 19:47:00').getTime();
 
 let finalBox = null;
+let countdownInterval; // <-- declare first
 
 function createFinalBox(value) {
     if (!finalBox) {
@@ -70,8 +71,8 @@ function updateCountdown() {
         `${String(seconds).padStart(2, '0')}`;
 }
 
+// Update every second
+countdownInterval = setInterval(updateCountdown, 1000);
+
 // Run immediately
 updateCountdown();
-
-// Update every second
-const countdownInterval = setInterval(updateCountdown, 1000);
