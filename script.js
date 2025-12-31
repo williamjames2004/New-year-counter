@@ -4,7 +4,7 @@ const fireworksElement = document.getElementById('fireworks');
 const box = document.querySelector('.box');
 
 // ❗ SET YOUR TARGET TIME
-const targetDate = new Date('December 31, 2025 19:47:00').getTime();
+const targetDate = new Date('January 1, 2026 00:00:00').getTime();
 
 let finalBox = null;
 let countdownInterval; // <-- declare first
