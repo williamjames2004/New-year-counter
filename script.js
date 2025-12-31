@@ -1,38 +1,46 @@
-
-
 const countdownElement = document.getElementById('timer');
 const greeting = document.getElementById('countdown');
 const fireworksElement = document.getElementById('fireworks');
 
-// Set the date and time for the countdown
+// ❗ DO NOT CHANGE THIS (as requested)
 const targetDate = new Date('January 1, 2026 00:00:00').getTime();
 
 function updateCountdown() {
-    const now = new Date().getTime();
+    const now = Date.now();
     const timeLeft = targetDate - now;
 
     if (timeLeft <= 0) {
         clearInterval(countdownInterval);
-        greeting.textContent = 'Happy New Year 2025!';
-        fireworksElement.classList.remove('hidden');
+
+        // Hide timer
         countdownElement.classList.add('none');
+
+        // Show greeting
+        greeting.textContent = '🎉 Happy New Year 2026 🎉';
         greeting.classList.remove('greet');
+        greeting.style.display = 'block';
 
-    } else {
-        let days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-        let hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-        let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+        // Show fireworks
+        fireworksElement.classList.remove('hidden');
 
-        const d = days<10?`0${days}`:days;
-        const h = hours<10?`0${hours}`:hours;
-        const m = minutes<10?`0${minutes}`:minutes;
-        const s = seconds<10?`0${seconds}`:seconds;
-
-
-        countdownElement.textContent = `${d} : ${h} : ${m} : ${s}`;
+        return;
     }
+
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
+    const seconds = Math.floor((timeLeft / 1000) % 60);
+
+    const d = String(days).padStart(2, '0');
+    const h = String(hours).padStart(2, '0');
+    const m = String(minutes).padStart(2, '0');
+    const s = String(seconds).padStart(2, '0');
+
+    countdownElement.textContent = `${d} : ${h} : ${m} : ${s}`;
 }
 
-// Update countdown every second
+// Initial call (prevents 1s delay)
+updateCountdown();
+
+// Update every second
 const countdownInterval = setInterval(updateCountdown, 1000);
